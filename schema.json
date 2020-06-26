@@ -1,0 +1,166 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://example.com/example.json",
+    "type": "object",
+    "description": "The schema that every RPFM Template must adhere to.",
+    "required": [
+        "version",
+        "author",
+        "description",
+        "params",
+        "dbs",
+        "locs",
+        "assets"
+    ],
+    "properties": {
+        "version": {
+            "$id": "#/properties/version",
+            "type": "integer",
+            "description": "The schema version. Don't change this.",
+            "default": 1
+        },
+        "author": {
+            "$id": "#/properties/author",
+            "type": "string",
+            "description": "The template's author/s."
+        },
+        "description": {
+            "$id": "#/properties/description",
+            "type": "string",
+            "description": "A brief description of what this template is for."
+        },
+        "params": {
+            "$id": "#/properties/params",
+            "type": "array",
+            "description": "List of params this template ask the user for, in a (key, what_the_user_see) format.",
+            "items": {
+                "$id": "#/properties/params/items",
+                "type": "array",
+                "description": "Pair of Internal Key/Display Text of a param.",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                    "$id": "#/properties/params/items/items",
+                    "type": "string"
+                }
+            }
+        },
+        "dbs": {
+            "$id": "#/properties/dbs",
+            "type": "array",
+            "description": "An array with all the DB files to be added/modified with this template",
+            "items": {
+                "$id": "#/properties/dbs/items",
+                "type": "object",
+                "description": "A DB file to be added/modified with this template.",
+                "required": [
+                    "name",
+                    "table",
+                    "default_data"
+                ],
+                "properties": {
+                    "name": {
+                        "$id": "#/properties/dbs/items/properties/name",
+                        "type": "string",
+                        "description": "The full name of the table file to add/modify."
+                    },
+                    "table": {
+                        "$id": "#/properties/dbs/items/properties/table",
+                        "type": "string",
+                        "description": "The full table type (the folder in /db that ends in _tables) to add/modify.",
+                        "pattern": "^[a-zA-Z_]*?_tables$"
+                    },
+                    "default_data": {
+                        "$id": "#/properties/dbs/items/properties/default_data",
+                        "type": "array",
+                        "description": "The rows we'll add to the db, with the data we're going to change in each row.",
+                        "items": {
+                            "$id": "#/properties/dbs/items/properties/default_data/items",
+                            "type": "array",
+                            "description": "A row in the db, with the data we're going to change in it.",
+                            "items": {
+                                "$id": "#/properties/dbs/items/properties/default_data/items/items",
+                                "type": "array",
+                                "description": "A change in a row.",
+                                "minItems": 2,
+                                "maxItems": 2,
+                                "items": {
+                                    "$id": "#/properties/dbs/items/properties/default_data/items/items/items",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "locs": {
+            "$id": "#/properties/locs",
+            "type": "array",
+            "description": "An array with all the Loc files to be added/modified with this template",
+            "items": {
+                "$id": "#/properties/locs/items",
+                "type": "object",
+                "description": "A Loc file to be added/modified with this template.",
+                "required": [
+                    "name",
+                    "default_data"
+                ],
+                "properties": {
+                    "name": {
+                        "$id": "#/properties/locs/items/properties/name",
+                        "type": "string",
+                        "description": "The full name of the table file to add/modify."
+                    },
+                    "default_data": {
+                        "$id": "#/properties/locs/items/properties/default_data",
+                        "type": "array",
+                        "description": "The rows we'll add to the loc, with the data we're going to change in each row.",
+                        "items": {
+                            "$id": "#/properties/locs/items/properties/default_data/items",
+                            "type": "array",
+                            "description": "A row in the loc, with the data we're going to change in it.",
+                            "items": {
+                                "$id": "#/properties/locs/items/properties/default_data/items/items",
+                                "type": "array",
+                                "description": "A change in a row.",
+                                "minItems": 2,
+                                "maxItems": 2,
+                                "items": {
+                                    "$id": "#/properties/locs/items/properties/default_data/items/items/items",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "assets": {
+            "$id": "#/properties/assets",
+            "type": "array",
+            "description": "An array of files to be added with this template.",
+            "items": {
+                "$id": "#/properties/assets/items",
+                "type": "object",
+                "description": "A file to be added with this template.",
+                "required": [
+                    "file_name",
+                    "packed_file_path"
+                ],
+                "properties": {
+                    "file_name": {
+                        "$id": "#/properties/assets/items/properties/file_name",
+                        "type": "string",
+                        "description": "The file name, in the assets folder.",
+                    },
+                    "packed_file_path": {
+                        "$id": "#/properties/assets/items/properties/packed_file_path",
+                        "type": "string",
+                        "description": "The full path the file will have inside the PackFile.",
+                    }
+                }
+            }
+        }
+    }
+}
