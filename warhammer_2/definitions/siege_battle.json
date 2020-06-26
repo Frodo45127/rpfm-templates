@@ -1,0 +1,60 @@
+{
+    "version": 1,
+    "author": "Frodo45127",
+    "description": "Template to generate the files for a Siege Battlemap.",
+    "params": [
+        [
+            "Name of the Files",
+            "name"
+        ],
+        [
+            "Key of the Map",
+            "key"
+        ],
+        [
+            "Ingame name of the Map",
+            "map_display_name"
+        ]
+    ],
+    "dbs": [
+        {
+            "name": "{@name}",
+            "table": "battles_tables",
+            "default_data": [
+                [
+                    [
+                        "key",
+                        "{@key}"
+                    ],
+                    [
+                        "screenshot_path",
+                        "ui/frontend ui/battle_map_images/{@name}.tga"
+                    ]
+                ]
+            ]
+        }
+    ],
+    "locs": [
+        {
+            "name": "{@name}.loc",
+            "default_data": [
+                [
+                    [
+                        "key",
+                        "battles_localised_name_{@key}"
+                    ],
+                    [
+                        "text",
+                        "{@map_display_name}"
+                    ]
+                ]
+            ]
+        }
+    ],
+    "assets": [
+        {
+            "file_name": "siege_battle_image.tga",
+            "packed_file_path": "ui/frontend ui/battle_map_images/{@name}.tga"
+        }
+    ]
+}
