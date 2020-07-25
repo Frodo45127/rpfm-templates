@@ -8,6 +8,10 @@
             "name"
         ],
         [
+            "ID of the Map",
+            "map_id"
+        ],
+        [
             "Key of the Map",
             "key"
         ],
@@ -27,8 +31,44 @@
                         "{@key}"
                     ],
                     [
+                        "type",
+                        "siege"
+                    ],
+                    [
+                        "specification",
+                        "terrain/battles/{@map_id}/"
+                    ],
+                    [
                         "screenshot_path",
                         "ui/frontend ui/battle_map_images/{@name}.tga"
+                    ],
+                    [
+                        "team_size_1",
+                        "4"
+                    ],
+                    [
+                        "team_size_2",
+                        "4"
+                    ],
+                    [
+                        "release",
+                        "true"
+                    ],
+                    [
+                        "multiplayer",
+                        "true"
+                    ],
+                    [
+                        "singleplayer",
+                        "true"
+                    ],
+                    [
+                        "defender_funds_ratio",
+                        "0.7"
+                    ],
+                    [
+                        "has_15m_walls",
+                        "true"
                     ]
                 ]
             ]
